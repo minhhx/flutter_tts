@@ -165,12 +165,14 @@ class FlutterTts {
       IosTextToSpeechAudioCategoryOptions.defaultToSpeaker:
           'iosAudioCategoryOptionsDefaultToSpeaker',
     };
-    if (!Platform.isAndroid) return;
+    if (!Platform.isIOS) return;
+    print(options.map((o) => optionsToString[o]));
     try {
       return _channel
           .invokeMethod<dynamic>('setIosAudioCategory', <String, dynamic>{
         iosAudioCategoryKey: categoryToString[category],
-        iosAudioCategoryOptionsKey: options.map((o) => optionsToString[o])
+        iosAudioCategoryOptionsKey:
+            options.map((o) => optionsToString[o]).toList()
       });
     } on PlatformException catch (e) {
       print(

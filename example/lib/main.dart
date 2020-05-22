@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+//import 'package:audioplayers/audio_cache.dart';
+//import 'package:audioplayers/audioplayers.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -28,13 +31,22 @@ class _MyAppState extends State<MyApp> {
 
   get isStopped => ttsState == TtsState.stopped;
 
+//  AudioPlayer _advancedPlayerBG;
+//  AudioCache _audioCacheBG;
+
+//  void playBackgroundMusic() {
+//    _advancedPlayerBG = AudioPlayer();
+//    _audioCacheBG = AudioCache(fixedPlayer: _advancedPlayerBG);
+//    _audioCacheBG.loop("liziqi_1_short.mp3", volume: 0.4);
+//  }
+
   @override
   initState() {
     super.initState();
     initTts();
   }
 
-  initTts() {
+  initTts() async {
     flutterTts = FlutterTts();
 
     _getLanguages();
@@ -59,6 +71,14 @@ class _MyAppState extends State<MyApp> {
         ttsState = TtsState.stopped;
       });
     });
+
+//    await flutterTts.setSharedInstance(true);
+//    await flutterTts.setIosAudioCategory(IosTextToSpeechAudioCategory.playAndRecord, [
+//      IosTextToSpeechAudioCategoryOptions.allowBluetooth,
+//      IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP,
+//      IosTextToSpeechAudioCategoryOptions.mixWithOthers
+//    ]);
+//    playBackgroundMusic();
   }
 
   Future _getLanguages() async {

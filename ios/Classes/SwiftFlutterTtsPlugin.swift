@@ -288,7 +288,7 @@ public class SwiftFlutterTtsPlugin: NSObject, FlutterPlugin, AVSpeechSynthesizer
 
   public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
     do {
-      try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        // try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
     } catch {
       print(error)
     }
